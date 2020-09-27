@@ -18,5 +18,5 @@ def home_view(request):
         return render(request,'mapping/home.html',{'ids':ids})
 
     else:
-        ids = Full_table.objects.all()[:3]
+        ids = None
         return render(request,'mapping/home.html',{'ids':ids})
