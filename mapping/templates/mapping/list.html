@@ -1,26 +1,19 @@
-<html>
-    <head>
-        <title>Mapping list</title>
-        <style>
-          table, th, td {
-            border: 1px solid black;
-          }
-        </style>
-    </head>
-    <body>
-        <h1>Mapping list</h1>
-        <a href="{% url 'mapping:home' %}"> Go home </a>
-        <table style="width:100%">
-            <tr>
-              <th>Alias/Standard Name</th>
-              <th>ID</th>
-            <tr>
-              {% for id in ids %}
-                <tr>
-                  <td>{{ id.alias }}</td>
-                  <td>{{id.feture_name}}</td>
-                </tr>
-              {% endfor %}
-        </table>
-    </body>
-</html>
+{% extends 'mapping/base.html' %}
+{% block content %}
+  <h1>Full Table</h1>
+  <a href="{% url 'mapping:home' %}"> Go home </a>
+  <table class="table table-bordered">
+        <thead class = "thead-dark">
+          <tr>
+            <th>Alias / Standard Name</th>
+            <th>ID</th>
+          <tr>
+        </thead>
+        {% for id in ids %}
+          <tr>
+            <td>{{ id.alias }}</td>
+            <td>{{id.feture_name}}</td>
+          </tr>
+        {% endfor %}
+  </table>
+{% endblock %}

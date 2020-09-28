@@ -1,39 +1,36 @@
-<html>
-    <head>
-        <title>Mapping ID</title>
-        <style>
-          table, th, td {
-            border: 1px solid black;
-          }
-        </style>
-    </head>
-    <body>
-        <h1>Mapping Id</h1>
-        <a href="{% url 'mapping:all' %}"> See all </a>
-
-        <form method="POST" enctype="multipart/form-data" >
-        {% csrf_token %}
-          <label for="myfile">Select a file:</label>
-          <input type="file" name="file"><br><br>
-          <input type="submit">
-        </form>
-
-        <table style="width:100%">
-            <tr>
-              <th>Alias/Standard Name</th>
-              <th>ID</th>
-            <tr>
-            {% for id in ids %}
-              <tr>
-                <td>{{ id.alias }}</td>
-                <td>{{id.feture_name}}</td>
-              </tr>
-            {% endfor %}
-        </table>
-        <p>can't mapping:</p>
-
-        {% for error in errors %}
-          <small>{{error}}</small><br>
-        {% endfor %}
-    </body>
-</html>
+{% extends 'mapping/base.html' %}
+{% block content %}
+  <h1>Mapping ID</h1>
+  <a href="{% url 'mapping:all' %}"> See Full Table </a>
+  <form method="POST" enctype="multipart/form-data" >
+  {% csrf_token %}
+    <label for="myfile">Select a file:</label>
+    <input type="file" name="file"><br><br>
+    <input type="submit">
+  </form>
+  <table class="table table-bordered">
+      <thead class = "thead-dark">
+        <tr>
+          <th>Input</th>
+          <th>ID</th>
+        <tr>
+      </thead>
+      {% for id in ids %}
+        <tr>
+          {% if id.alias %}
+            <td>{{ id.alias }}</td>
+          {% else %}
+            <td>{{ id.feture_name }}</td>
+          {% endif %}
+          <td>{{id.feture_name}}</td>
+        </tr>
+      {% endfor %}
+  </table>
+  {% if errors %}
+    <p>These item can't mapping:<br>
+    {% for error in errors %}
+      <small>{{error}}</small><br>
+    {% endfor %}
+    </p>
+  {% endif %}
+{% endblock %}

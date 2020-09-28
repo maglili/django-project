@@ -7,3 +7,9 @@ class Full_table(models.Model):
 
     def __str__(self):
         return self.alias
+
+class ID_table(models.Model):
+    feture_name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.feture_name

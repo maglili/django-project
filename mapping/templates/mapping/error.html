@@ -1,0 +1,7 @@
+{% extends 'mapping/base.html' %}
+{% block content %}
+  <h1> File Error </h1>
+  <p> If you see this page, please check your file type.</p>
+  <p>File type must be ".xlsx" and you must need to opload a file</p>
+  <a href="{% url 'mapping:home' %}">Go back</a>
+{% endblock %}
