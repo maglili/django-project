@@ -9,6 +9,7 @@
     </head>
     <body>
         <h1>Mapping Id</h1>
+        <a href="{% url 'mapping:all' %}"> See all </a>
 
         <form method="POST" enctype="multipart/form-data" >
         {% csrf_token %}
@@ -29,5 +30,10 @@
               </tr>
             {% endfor %}
         </table>
+        <p>can't mapping:</p>
+
+        {% for error in errors %}
+          <small>{{error}}</small><br>
+        {% endfor %}
     </body>
 </html>
