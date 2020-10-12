@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>home_page</title>
+    </head>
+    <body>
+        <div class="page-header">
+            <h1>HOME PAGE</h1>
+        </div>
+        <div class="content container">
+          <ul>
+            <li><a href="{% url 'blog:post_list' %}">blog</a></li>
+            <li><a href="{% url 'mapping:home' %}">mapping</a></li>
+            <li><a href="{% url 'str:main' %}">str</a></li>
+          </ul>
+        </div>
+    </body>
+</html>
